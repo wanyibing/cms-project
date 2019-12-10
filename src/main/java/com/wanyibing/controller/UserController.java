@@ -8,7 +8,7 @@ import com.wanyibing.service.UserService;
 @Controller
 public class UserController {
  
-	@Autowired
+	@Autowired 
 	private UserService service;
 	
 }
