@@ -30,7 +30,7 @@
 		<aspectj-version>1.8.0</aspectj-version>
 		<!-- 分页助手 -->
 		<pagehelper-version>5.1.2</pagehelper-version>
-
+ 
 	</properties>
 	
   <dependencies>
