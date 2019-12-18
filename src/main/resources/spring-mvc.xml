@@ -13,7 +13,7 @@
 		
 	<!--  todo --> 
 	<context:component-scan
-		base-package=" com.wanyibing.controller"></context:component-scan>
+		base-package="com.wanyibing.controller"></context:component-scan>
 	<!-- 视图解析图 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -24,25 +24,25 @@
 	</bean>
 	
 	<!-- 配置权限的拦截器 -->
-<!-- 	<mvc:interceptors>
+ 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/user/login"/>
-			<mvc:exclude-mapping path="/user/register"/>
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/register"/>
 			<mvc:exclude-mapping path="/"/>
 			<mvc:exclude-mapping path="/index"/>
 			<mvc:exclude-mapping path="/pic/**"/>
 			<mvc:exclude-mapping path="/resource/**"/>
 			<mvc:exclude-mapping path="/article/showdetail"/>
-			<bean class="com.zhangjiawei.web.UserInterceptor"></bean>
+			<bean class="com.wanyibing.web.UserInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors> 
 	
 	<!-- 上传下载配置 -->	
-	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"></property>
 		<property name="maxUploadSize" value="10485760000"></property>
-	</bean> -->
+	</bean>
 	
 	<!-- <bean class=""></bean> -->
 	<!-- 不拦截静态资源 -->

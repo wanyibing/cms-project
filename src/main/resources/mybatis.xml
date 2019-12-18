@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  
  
  <!-- 配置分页助手拦截器 -->
-<!-- <plugins>
+ <plugins>
  <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
  
- </plugins> -->
+ </plugins> 
 </configuration>
