@@ -12,6 +12,7 @@ import com.wanyibing.Utils.CmsContant;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
+import com.wanyibing.entity.Comment;
 import com.wanyibing.entity.Slide;
 import com.wanyibing.mapper.ArticleMapper;
 import com.wanyibing.mapper.SlideMapper;
@@ -144,5 +145,41 @@ public class ArticleServiceimpl implements ArticleService {
 		
 		return new PageInfo<>(articleMapper.hotList());
 	}
-	
+	/**
+	 * 获取当前栏目下所有分类
+	 */
+	@Override
+	public List<Category> getCategoriesByChannelId(int channelId) {
+		// TODO Auto-generated method stub
+		return articleMapper.getCategoriesByChannelId(channelId);
+	}
+	/**
+	 * 评论
+	 */
+	@Override
+	public int addComment(Comment comment) {
+		// TODO Auto-generated method stub
+				int result =  articleMapper.addComment(comment);
+				 //文章评论数目自增
+				if(result>0)
+					articleMapper.increaseCommentCnt(comment.getArticleId());
+				
+				return result;
+	}
+	/**
+	 * 查询评论
+	 */
+	@Override
+	public PageInfo<Comment> getComments(int id, int page) {
+
+		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+		
+		return new PageInfo<Comment>(articleMapper.getComments(id));
+	}
+	@Override
+	public PageInfo<Article> getArticles(int channelId, int catId, int page) {
+		PageHelper.startPage(page,CmsContant.PAGE_SIZE);
+		
+		return new PageInfo<Article>(articleMapper.getArticles(channelId, catId));
+	}
 }

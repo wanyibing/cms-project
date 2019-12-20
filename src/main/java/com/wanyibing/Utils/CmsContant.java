@@ -5,7 +5,7 @@ package com.wanyibing.Utils;
  */
 public class CmsContant {
 
-	public static final String USER_KEY="login_session_key";
+	public static final String USER_KEY="loingSessionKey";
 	
 	
 	// 普通用户

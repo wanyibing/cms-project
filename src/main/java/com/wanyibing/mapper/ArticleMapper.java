@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
+import com.wanyibing.entity.Comment;
 
 public interface ArticleMapper {
 
@@ -55,6 +56,25 @@ public interface ArticleMapper {
 	List<Article>  hotList();
 
 	List<Article> lastList(int pageSize);
+
+	@Select("SELECT id,name FROM cms_category where channel_id=#{value}")
+	List<Category> getCategoriesByChannelId(int channelId);
+
+	@Insert("INSERT INTO cms_comment(articleId,userId,content,created)"
+			+ " VALUES(#{articleId},#{userId},#{content},NOW())")
+	int addComment(Comment comment);
+
+	@Update("UPDATE cms_article SET commentCnt=commentCnt+1 WHERE id=#{value}")
+	int increaseCommentCnt(int articleId);
+
+	//查询评论
+	@Select("SELECT u.url as url,c.id,c.articleId,c.userId,u.username as userName,c.content,c.created FROM cms_comment as c "
+			+ " LEFT JOIN cms_user as u ON u.id=c.userId "
+			+ " WHERE articleId=#{value} ORDER BY c.created DESC")
+	List<Comment> getComments(int id);
+
+	List<Article> getArticles(@Param("channelId")  int channleId, @Param("catId") int catId);
+
 
 	
 	

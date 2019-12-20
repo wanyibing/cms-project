@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
+import com.wanyibing.entity.Comment;
 import com.wanyibing.entity.Slide;
 
 public interface ArticleService {
@@ -26,6 +27,7 @@ public interface ArticleService {
 
 	PageInfo<Article> list(int page);
 
+	//文章详情
 	Article findById(int id);
 
 	Article getInfoById(int id);
@@ -41,5 +43,13 @@ public interface ArticleService {
 	List<Article> lastList();
 
 	List<Slide> getSlides();
+
+	List<Category> getCategoriesByChannelId(int channelId);
+
+	int addComment(Comment comment);
+
+	PageInfo<Comment> getComments(int id, int page);
+
+	PageInfo<Article> getArticles(int channelId, int catId, int page);
 
 }

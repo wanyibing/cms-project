@@ -48,6 +48,12 @@ public class UserController {
 	@Autowired
 	private ArticleService articleService;
 	
+	@RequestMapping("logout")
+	public String home(HttpServletRequest request) {
+		request.getSession().removeAttribute(CmsContant.USER_KEY);
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value="register",method=RequestMethod.GET)
 	public String login1(HttpServletRequest request) {
 		User user = new User(); 
@@ -121,8 +127,8 @@ public class UserController {
 		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
 		
 		//管理界面
-		if(loginUser.getRole()==CmsContant.USER_ROLE_ADMIN)  
-			return "redirect:/admin/index";
+		/*if(loginUser.getRole()==CmsContant.USER_ROLE_ADMIN)  
+			return "redirect:/admin/index";*/
 	 
 		 
 		return "redirect:home";

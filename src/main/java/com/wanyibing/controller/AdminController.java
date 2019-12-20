@@ -5,12 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.wanyibing.Utils.CmsContant;
 import com.wanyibing.Utils.CmsError;
 import com.wanyibing.Utils.CmsMessage;
 import com.wanyibing.entity.Article;
+import com.wanyibing.entity.User;
 import com.wanyibing.service.ArticleService;
 
 @RequestMapping("admin")
@@ -65,7 +68,7 @@ public class AdminController {
 	@ResponseBody
 	public CmsMessage setArticeHot(int id,int status) {
 		
-		if(status != 1 && status !=2) {
+		if(status != 0 && status !=1) {
 			return new CmsMessage(CmsError.NOT_VALIDATED_ARGURMENT, "参数不合法", null);
 			
 		}
@@ -78,7 +81,6 @@ public class AdminController {
 		}
 		
 		if(article.getStatus()==status) {
-			return new CmsMessage(CmsError.NEEDNT_UPDATE,"数据无需更改",null);
 		}
 		int result = articleService.setHot(id,status);
 		if(result<1)
@@ -106,6 +108,29 @@ public class AdminController {
 		int i = articleService.deletearticle(id);
 		
 		return i>0;
+	}
+	
+	/**
+	 * 管理员中心
+	 * @param request
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("loginAdmin") 
+	@ResponseBody
+	public boolean login(HttpServletRequest request,User user) {
+		
+		User u = (User) request.getSession().getAttribute(CmsContant.USER_KEY);
+		System.out.println(u);
+		if(u.getRole()!=CmsContant.USER_ROLE_ADMIN)
+			request.setAttribute("erro","您不是管理员");
+		
+		//管理界面
+		if(u.getRole()==CmsContant.USER_ROLE_ADMIN)  
+			return true;
+	 
+		 
+		return false;
 	}
 	
 }
