@@ -12,6 +12,7 @@ import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
 import com.wanyibing.entity.Comment;
+import com.wanyibing.entity.Complain;
 
 public interface ArticleMapper {
 
@@ -74,6 +75,19 @@ public interface ArticleMapper {
 	List<Comment> getComments(int id);
 
 	List<Article> getArticles(@Param("channelId")  int channleId, @Param("catId") int catId);
+
+	@Insert("INSERT INTO cms_complain(article_id,user_id,complain_type,"
+			+ "compain_option,src_url,picture,content,email,mobile,created)"
+			+ " VALUES(#{articleId},#{userId},"
+			+ "#{complainType},#{compainOption},#{srcUrl},#{picture},#{content},#{email},#{mobile},now())")
+	int addCoplain(Complain complain);
+
+	
+	@Update("UPDATE cms_article SET complainCnt=complainCnt+1,status=if(complainCnt>10,2,status) "
+			+ " WHERE id=#{value}")
+	void increaseComplainCnt(Integer articleId);
+
+	List<Complain> getComplains(int articleId);
 
 
 	

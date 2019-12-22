@@ -1,26 +1,35 @@
 package com.wanyibing.controller;
 
-import java.util.List;
+
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageInfo;
 import com.wanyibing.Utils.CmsContant;
 import com.wanyibing.Utils.CmsError;
 import com.wanyibing.Utils.CmsMessage;
+import com.wanyibing.cms.utils.StringUtils;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Comment;
+import com.wanyibing.entity.Complain;
 import com.wanyibing.entity.User;
 import com.wanyibing.service.ArticleService;
 
 @Controller
 @RequestMapping("article")
-public class ArticleController {
+public class ArticleController extends BaseController{
 
 	@Autowired
 	ArticleService articleService;
@@ -84,6 +93,58 @@ public class ArticleController {
 			PageInfo<Comment> commentPage =  articleService.getComments(id,page);
 			request.setAttribute("commentPage", commentPage);
 			return "comments";
-		}	
-	
+		}
+		
+		/**
+		 *跳转到投诉页面 
+		 * @param request
+		 * @param articleId
+		 * @return
+		 */
+		@RequestMapping(value="complain",method=RequestMethod.GET)
+		public String complain(HttpServletRequest request,int articleId) {
+			
+			Article article = articleService.getById(articleId);
+			request.setAttribute("article",article);
+			request.setAttribute("complain",new Complain());
+			return "article/complain";
+		}
+		
+		@RequestMapping(value="complain",method=RequestMethod.POST)
+		public String complain(HttpServletRequest request,
+				@ModelAttribute("complain") @Valid Complain complain,
+				MultipartFile file,BindingResult result) throws IllegalStateException, IOException {
+			
+			if(!StringUtils.isUrl(complain.getSrcUrl())) {
+				result.rejectValue("srcUrl", "", "不是合法的Url地址");
+			}
+			if(result.hasErrors()) {
+				return "article/complain";
+				
+			}
+			User loginUser = (User)request.getSession().getAttribute(CmsContant.USER_KEY);
+			String picUrl = this.processFile(file);
+			complain.setPicture(picUrl);
+			
+			
+			if(loginUser!=null) {
+				complain.setUserId(loginUser.getId());
+			}else {
+				complain.setUserId(0);
+			}
+			
+			articleService.addComplain(complain);
+			return "redirect:/article/detail?id="+complain.getArticleId();
+		}
+		
+		@RequestMapping("complains")
+		public String complains(HttpServletRequest request,int articleId,
+				@RequestParam(defaultValue="1")int page) {
+			
+			PageInfo<Complain> complianPage = articleService.getComplains(articleId,page);
+			request.setAttribute("complianPage",complianPage);
+			return "article/complainslist";
+			
+		}
+		
 }

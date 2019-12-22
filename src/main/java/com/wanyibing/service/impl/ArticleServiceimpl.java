@@ -13,6 +13,7 @@ import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
 import com.wanyibing.entity.Comment;
+import com.wanyibing.entity.Complain;
 import com.wanyibing.entity.Slide;
 import com.wanyibing.mapper.ArticleMapper;
 import com.wanyibing.mapper.SlideMapper;
@@ -181,5 +182,27 @@ public class ArticleServiceimpl implements ArticleService {
 		PageHelper.startPage(page,CmsContant.PAGE_SIZE);
 		
 		return new PageInfo<Article>(articleMapper.getArticles(channelId, catId));
+	}
+	
+	/**
+	 * 举报信息
+	 */
+	@Override
+	public int addComplain(Complain complain) {
+		
+		//添加投诉到数据库
+		int result = articleMapper.addCoplain(complain);
+		//增加投诉的数量
+		if(result>0) {
+			articleMapper.increaseComplainCnt(complain.getArticleId());
+		}
+		
+		return 0;
+	}
+	@Override
+	public PageInfo<Complain> getComplains(int articleId, int page) {
+
+		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+		return new PageInfo<Complain>(articleMapper.getComplains(articleId));
 	}
 }

@@ -2,11 +2,14 @@ package com.wanyibing.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.github.pagehelper.PageInfo;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
 import com.wanyibing.entity.Comment;
+import com.wanyibing.entity.Complain;
 import com.wanyibing.entity.Slide;
 
 public interface ArticleService {
@@ -51,5 +54,9 @@ public interface ArticleService {
 	PageInfo<Comment> getComments(int id, int page);
 
 	PageInfo<Article> getArticles(int channelId, int catId, int page);
+
+	int addComplain(Complain complain);
+
+	PageInfo<Complain> getComplains(int articleId, int page);
 
 }
