@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,7 +117,8 @@ public class UserController {
 	 * 
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST) 
-	public String login(HttpServletRequest request,User user) {
+	public String login(HttpServletRequest request,User user,HttpServletResponse response) {
+		String pwd = new String(user.getPassword());
 		User loginUser = service.login(user);
 		
 		if(loginUser==null) {
@@ -125,6 +128,20 @@ public class UserController {
 		
 		//登录成功  用户信息存放到session当中
 		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
+		
+		Cookie cookieUserName = new Cookie("username", user.getUsername());
+		cookieUserName.setPath("/");
+		cookieUserName.setMaxAge(10*24*3600);
+		response.addCookie(cookieUserName);
+		Cookie cookieUserPwd = new Cookie("userpwd",pwd);
+		cookieUserPwd.setPath("/");
+		cookieUserPwd.setMaxAge(10*24*3600);
+		response.addCookie(cookieUserPwd);
+		
+		
+	/*	Cookie cookie = new Cookie("password", user.getPassword());
+		response.addCookie(cookie);
+		*/
 		
 		//管理界面
 		/*if(loginUser.getRole()==CmsContant.USER_ROLE_ADMIN)  
