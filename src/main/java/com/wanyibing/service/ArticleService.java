@@ -59,4 +59,6 @@ public interface ArticleService {
 
 	PageInfo<Complain> getComplains(int articleId, int page);
 
+	PageInfo<Complain> complainlist(int page);
+
 }

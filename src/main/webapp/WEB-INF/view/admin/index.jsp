@@ -45,6 +45,9 @@
 				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/comment')" >评论管理</a>
 				  </li>
+				  <!-- <li class="nav-item">
+				    <a class="nav-link active" href="#" onclick="showComplain($(this),'/admin/complain')" >举报管理管理</a>
+				  </li> -->
 				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork($(this),'/admin/link')" >友情链接管理</a>
 				  </li>
@@ -73,6 +76,13 @@
 		obj.parent().addClass("menuselected")		
 		$("#workcontent").load(url);
 		
+	}
+	
+	function showComplain(obj,url) {
+		alert(11)
+		$(".mymenuselected li").removeClass("menuselected");
+		obj.parent().addClass("menuselected")
+		$("#workcontent").load(url);
 	}
 </script>
 </body>

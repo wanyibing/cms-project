@@ -205,4 +205,12 @@ public class ArticleServiceimpl implements ArticleService {
 		PageHelper.startPage(page, CmsContant.PAGE_SIZE);
 		return new PageInfo<Complain>(articleMapper.getComplains(articleId));
 	}
+	/**
+	 * 举报
+	 */
+	 @Override
+	public PageInfo<Complain> complainlist(int page) {
+		 PageHelper.startPage(page, CmsContant.PAGE_SIZE);
+			return new PageInfo<Complain>(articleMapper.complainlist());
+	}
 }

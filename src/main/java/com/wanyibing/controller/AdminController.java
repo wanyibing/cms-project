@@ -1,5 +1,7 @@
 package com.wanyibing.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.wanyibing.Utils.CmsContant;
 import com.wanyibing.Utils.CmsError;
 import com.wanyibing.Utils.CmsMessage;
 import com.wanyibing.entity.Article;
+import com.wanyibing.entity.Complain;
 import com.wanyibing.entity.User;
 import com.wanyibing.service.ArticleService;
 
@@ -96,9 +99,9 @@ public class AdminController {
 	public String article(HttpServletRequest request,@RequestParam(defaultValue="1")int page,String status) {
 		
 		PageInfo<Article> articlePage = articleService.list(page,status);
+		System.out.println(articlePage);
 		request.setAttribute("articlePage", articlePage);
 		request.setAttribute("status",status);
-		
 		return "admin/article/list";
 	}
 	
@@ -132,6 +135,14 @@ public class AdminController {
 	 
 		 
 		return false;
+	}
+	
+	@RequestMapping("complain")
+	public String complainlist(HttpServletRequest request,@RequestParam(defaultValue="1")int page) {
+		
+		PageInfo<Complain> articlePage = articleService.complainlist(page);		
+		request.setAttribute("articlePage",articlePage);
+		return "admin/article/complain";
 	}
 	
 }

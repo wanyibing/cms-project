@@ -30,6 +30,7 @@
             <th>发布时间</th>
             <th>热门</th>
             <th>状态</th>
+            <th>举报次数</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -60,10 +61,11 @@
         					</c:otherwise>
         				</c:choose>
         			</td>
+        			<td>${article.complainCnt}</td>
         			<td width="200px">
         				<input type="button" value="删除"  class="btn btn-danger" onclick="del(${article.id})">
 						<input type="button" value="审核"  class="btn btn-warning" onclick="check(${article.id})" >        			
-        				<%-- <input type="button" value="管理投诉"  class="btn btn-warning" onclick="complainList(${article.id})" ></td> --%>
+        				 <%--  <input type="button" value="管理投诉"  class="btn btn-warning" onclick="complainList(${article.id})" ></td> --%>  
         		</tr>
         	</c:forEach>
         </tbody>
@@ -138,14 +140,14 @@
 	
 <!-- </div>     -->
 <script>
-
-/* $(function(){
+/* 
+  $(function(){
 	
 	$("#stu").change(function(){
 		$("#workcontent").load("admin/article?page="+'${articlePage.pageNum}'+"&status="+$('#id'))
 		
 	})
-}) */
+})   */
 
 
 $('#articleContent').on('hidden.bs.modal', function (e) {
@@ -206,6 +208,7 @@ var global_article_id;
 				alert('操作成功')
 				//隐藏当前的模态框
 				$('#articleContent').modal('hide')
+				$('#complainModal').modal('hide')
 				return;	
 			}
 			alert(msg.error);
@@ -235,12 +238,13 @@ var global_article_id;
 	/**
 	* 查看文章的投诉
 	*/
-/* 	function complainList(id){
+ 	function complainList(id){
 		global_article_id = id;
 		$("#complainModal").modal('show')
+		
 		$("#complainListDiv").load("/article/complains?articleId="+id);
 		
-	} */
+	} 
 	
 	function update(id){
 		$("#workcontent").load("updateArticle?id="+id);
@@ -251,6 +255,7 @@ var global_article_id;
 	* 翻页
 	*/
 	function gopage(page){
+		var status = $("#sel").val();
 		$("#workcontent").load("/admin/article?page="+page+"&status="+status);
 	}
 

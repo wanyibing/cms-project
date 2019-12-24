@@ -89,6 +89,9 @@ public interface ArticleMapper {
 
 	List<Complain> getComplains(int articleId);
 
+	
+	List<Complain> complainlist();
+
 
 	
 	

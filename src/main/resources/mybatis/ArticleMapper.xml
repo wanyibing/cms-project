@@ -19,7 +19,7 @@
 	 
 	 <!-- 管理员查询 -->
 	 <select id="list" resultMap="articleMapper">
-	 	SELECT id,title,channel_id,category_id ,user_id, created,status,hot 
+	 	SELECT id,title,channel_id,category_id ,user_id, created,status,hot,complainCnt 
 		  FROM cms_article
 		  WHERE  deleted=0
 		  <if test="status!='' and status!=null and status!=-1">
@@ -28,6 +28,13 @@
 		  ORDER BY status ASC  
 	 </select>
 	 
+	 <select id="complainlist" resultMap="articleMapper" >
+	 SELECT id,title,channel_id,category_id ,user_id, created,status,hot,complainCnt 
+		  FROM cms_article
+		  WHERE  deleted=0
+			and complainCnt>=1 
+		  ORDER BY status ASC  
+	 </select>
 	 
 	 <select id="listByUser" resultMap="articleMapper">
 	 	SELECT id,title,channel_id,category_id , created,STATUS 
@@ -100,4 +107,6 @@
 	<select id="getComplains" resultMap="ComplainMapper">
 		SELECT * FROM cms_complain where article_id=#{value}
 	</select>
+	
+	
 </mapper>
