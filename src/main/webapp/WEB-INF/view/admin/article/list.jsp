@@ -63,7 +63,7 @@
         			<td width="200px">
         				<input type="button" value="删除"  class="btn btn-danger" onclick="del(${article.id})">
 						<input type="button" value="审核"  class="btn btn-warning" onclick="check(${article.id})" >        			
-        				<input type="button" value="管理投诉"  class="btn btn-warning" onclick="complainList(${article.id})" ></td>
+        				<%-- <input type="button" value="管理投诉"  class="btn btn-warning" onclick="complainList(${article.id})" ></td> --%>
         		</tr>
         	</c:forEach>
         </tbody>
@@ -235,12 +235,12 @@ var global_article_id;
 	/**
 	* 查看文章的投诉
 	*/
-	function complainList(id){
+/* 	function complainList(id){
 		global_article_id = id;
 		$("#complainModal").modal('show')
 		$("#complainListDiv").load("/article/complains?articleId="+id);
 		
-	}
+	} */
 	
 	function update(id){
 		$("#workcontent").load("updateArticle?id="+id);
