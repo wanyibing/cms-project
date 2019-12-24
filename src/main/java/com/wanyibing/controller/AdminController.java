@@ -93,11 +93,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("article")
-	public String article(HttpServletRequest request,int page) {
+	public String article(HttpServletRequest request,@RequestParam(defaultValue="1")int page,String status) {
 		
-		PageInfo<Article> articlePage = articleService.list(page);
+		PageInfo<Article> articlePage = articleService.list(page,status);
 		request.setAttribute("articlePage", articlePage);
-		
+		request.setAttribute("status",status);
 		
 		return "admin/article/list";
 	}

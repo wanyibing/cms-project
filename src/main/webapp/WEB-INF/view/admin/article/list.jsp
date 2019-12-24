@@ -5,21 +5,23 @@
 <!-- <div class="container-fluid"> -->
 	<table class="table">
 		<!-- articlePage -->
-	
+	<thead>
+			    <tr>
+				      <th scope="col">
+				      							<select class="custom-select mr-sm-2" id="sel" >
+				      									<option value="-1"  ${status==-1?'selected':'' }>请选择</option>
+				      									<option value="0"  ${status==0?'selected':'' }>待审核</option>
+				      									<option value="1"  ${status==1?'selected':'' }>审核通过</option>
+				      									<option value="2"  ${status==2?'selected':'' }>审核被拒</option>
+				      							</select>
+				      </th>
+				      <th><button type="button" class="btn btn-outline-info" onclick="sele()">查询</button></th>
+			    </tr>
+		  </thead>
 	
 	  <thead>
 	  
-	  <tr>
 	  
-	  	<td>
-	  		<select id="stu">
-	  			<option value="0">待审核</option>
-	  			<option value="1">审核通过</option>
-	  			<option value="2">审核被拒</option>
-	  		</select>
-	  	</td>
-	  
-	  </tr>
           <tr>
             <th>id</th>
             <th>标题</th>
@@ -249,13 +251,17 @@ var global_article_id;
 	* 翻页
 	*/
 	function gopage(page){
-		$("#workcontent").load("/admin/article?page="+page);
+		$("#workcontent").load("/admin/article?page="+page+"&status="+status);
 	}
 
 	function refreshPage(){
+		var status = $("#sel").val();
 		$("#workcontent").load("/admin/article?page=" + '${articlePage.pageNum}');
 	}
-	
+	function sele() {
+		var status = $("#sel").val();
+		$("#workcontent").load("/admin/article?status="+status);
+	}
 
 	
 	

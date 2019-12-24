@@ -39,7 +39,7 @@ public interface ArticleMapper {
 
 	Article getById(int id);
 
-	List<Article> list();
+	List<Article> list(@Param("status")String status);
 
 	@Select("SELECT id,title,channel_id channelId , category_id categoryId,status ,hot "
 			+ " FROM cms_article WHERE id = #{value} ")

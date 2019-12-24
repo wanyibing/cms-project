@@ -28,7 +28,7 @@ public interface ArticleService {
 
 	Article getById(int id);
 
-	PageInfo<Article> list(int page);
+	PageInfo<Article> list(int page, String status);
 
 	//文章详情
 	Article findById(int id);

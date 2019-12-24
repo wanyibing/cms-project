@@ -22,6 +22,9 @@
 	 	SELECT id,title,channel_id,category_id ,user_id, created,status,hot 
 		  FROM cms_article
 		  WHERE  deleted=0
+		  <if test="status!='' and status!=null and status!=-1">
+		  	and status =#{status}
+		  </if>
 		  ORDER BY status ASC  
 	 </select>
 	 

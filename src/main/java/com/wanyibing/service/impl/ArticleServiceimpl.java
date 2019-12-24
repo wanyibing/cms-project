@@ -76,10 +76,10 @@ public class ArticleServiceimpl implements ArticleService {
 	 * 管理员
 	 */
 	@Override
-	public PageInfo<Article> list(int page) {
+	public PageInfo<Article> list(int page, String status) {
 
 		PageHelper.startPage(page,CmsContant.PAGE_SIZE);
-		PageInfo<Article> info = new PageInfo<>(articleMapper.list());
+		PageInfo<Article> info = new PageInfo<>(articleMapper.list(status));
 			
 		return info;
 	}
