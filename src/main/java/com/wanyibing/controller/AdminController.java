@@ -22,7 +22,7 @@ import com.wanyibing.mapper.ArticleMapper;
 import com.wanyibing.mapper.ArticleReP;
 import com.wanyibing.service.ArticleService;
 
-@RequestMapping("admin")
+@RequestMapping("admin") 
 @Controller
 public class AdminController { 
 
