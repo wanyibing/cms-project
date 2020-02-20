@@ -5,7 +5,7 @@ import java.util.Date;
 public class Comment {
 
 	private Integer id;
-	private  int articleId;
+	private  int articleId; 
 	private  int  userId;
 	private  String  content;
 	private  Date  created;

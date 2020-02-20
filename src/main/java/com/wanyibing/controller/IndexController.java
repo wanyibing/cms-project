@@ -21,7 +21,7 @@ import com.wanyibing.service.ArticleService;
 
 /**
  * 
- * @author 万一兵
+ * @author 万一 兵
  *
  */
 @Controller

@@ -14,7 +14,7 @@ import com.wanyibing.service.ArticleService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-beans.xml")
 public class TestUrl {
-
+ 
 	@Autowired
 	ArticleService articleService;
 	/**

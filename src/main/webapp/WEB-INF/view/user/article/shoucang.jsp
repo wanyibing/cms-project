@@ -8,7 +8,7 @@
 		<!-- articlePage -->
 		 </style>
  	<style type="text/css">
-body {
+body { 
 	
 		background: url(resource/images/123.jpg)
 	

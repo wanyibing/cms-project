@@ -7,7 +7,7 @@ package com.wanyibing.entity;
 public class Channel extends AbstractCategory{
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 264397770910362368L;
 

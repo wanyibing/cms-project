@@ -38,7 +38,7 @@ import com.wanyibing.service.UserService;
 
 @Controller
 public class UserController {
- 
+  
 	@Value("${upload.path}")
 	String picRootPath;
 	

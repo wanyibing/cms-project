@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/data/elasticsearch http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    
+     
     <!-- 扫描Dao包，自动创建实例 -->
 	<elasticsearch:repositories base-package="com.wanyibing.mapper" />
 	<!-- 扫描Service包，创建Service的实体 -->

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Slide implements Serializable{
 
 	 /**
-	 * 轮播图
+	 * 轮播图 
 	 */
 	private static final long serialVersionUID = -1212386621702595872L;
 	private Integer id;

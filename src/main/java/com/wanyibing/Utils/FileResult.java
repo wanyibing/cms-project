@@ -2,7 +2,7 @@ package com.wanyibing.Utils;
 
 /**
  * 
- * @author 
+ * @author  
  *
  */
 public class FileResult {

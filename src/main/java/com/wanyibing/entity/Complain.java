@@ -10,7 +10,7 @@ import org.springframework.lang.NonNull;
 public class Complain {
 
 	private Integer id ;
-	
+	 
 	@NonNull
 	private Integer articleId ;
 	

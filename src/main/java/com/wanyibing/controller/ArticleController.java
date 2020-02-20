@@ -44,7 +44,7 @@ import com.wanyibing.service.ArticleService;
 @Controller 
 @RequestMapping("article")
 public class ArticleController extends BaseController{
-
+ 
 	@Autowired
 	ArticleService articleService;
 	@Autowired //注入es更苦

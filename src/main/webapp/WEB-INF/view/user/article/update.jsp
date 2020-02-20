@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>   
-
+ 
 <!-- 文本的属性 -->
 <link rel="stylesheet" href="/resource/kindeditor/themes/default/default.css" />
 	<link rel="stylesheet" href="/resource/kindeditor/plugins/code/prettify.css" />

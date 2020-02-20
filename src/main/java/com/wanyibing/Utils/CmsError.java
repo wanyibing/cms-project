@@ -7,7 +7,7 @@ public class CmsError {
 	 */
 	public static final int SUCCESS = 1; 
 	
-	/**
+	/** 
 	 *  内容不存在
 	 */
 	public static final int NOT_EXIST = 2; 

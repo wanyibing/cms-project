@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Document(indexName="cms_articles",type="article")
 public class Article implements Serializable{
 
-	/**
+	/** 
 	 * 
 	 */
 	private static final long serialVersionUID = -3244387253957251736L;

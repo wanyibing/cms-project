@@ -6,7 +6,7 @@
 	    http://www.springframework.org/schema/beans/spring-beans.xsd
 	    http://www.springframework.org/schema/context
 	    http://www.springframework.org/schema/context/spring-context.xsd">
-	    
+	     
 	    <!--参数配置 -->
 	<bean id="producerProperties" class="java.util.HashMap">
 		<constructor-arg>

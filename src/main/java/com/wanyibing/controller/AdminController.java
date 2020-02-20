@@ -25,7 +25,7 @@ import com.wanyibing.service.ArticleService;
 @RequestMapping("admin") 
 @Controller
 public class AdminController { 
-
+ 
 	@Autowired 
 	ArticleService articleService;
 	

@@ -6,7 +6,7 @@
 	    http://www.springframework.org/schema/beans/spring-beans.xsd
 	    http://www.springframework.org/schema/context
 	    http://www.springframework.org/schema/context/spring-context.xsd">
-
+ 
 	<bean id="consumerProperties" class="java.util.HashMap">
 		<constructor-arg>
 			<map>

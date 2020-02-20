@@ -5,7 +5,7 @@ import java.util.Date;
 public class Shoucang {
 
 	private Integer id;
-	private  String  text;
+	private  String  text; 
 	private  String  url;
 	private  Integer  user_id;
 	private String created;

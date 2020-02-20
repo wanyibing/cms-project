@@ -5,7 +5,7 @@
 <!-- <div class="container-fluid"> -->
 	<table class="table">
 	  <thead>
-	  
+	   
 	  
           <tr>
             <th>id</th>

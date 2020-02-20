@@ -7,7 +7,7 @@ import org.springframework.kafka.listener.MessageListener;
 import com.alibaba.fastjson.JSON;
 import com.wanyibing.entity.Article;
 import com.wanyibing.service.ArticleService;
-
+ 
 public class ArticleListener implements MessageListener<String,String>{
 
 	@Autowired

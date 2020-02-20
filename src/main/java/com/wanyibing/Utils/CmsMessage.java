@@ -8,7 +8,7 @@ public class CmsMessage implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4465127234308124020L;
-
+ 
 	int code;
 	
 	String error;

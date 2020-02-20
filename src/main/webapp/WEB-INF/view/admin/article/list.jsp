@@ -10,7 +10,7 @@
 				      <th scope="col">
 				      							<select class="custom-select mr-sm-2" id="sel" >
 				      									<option value="-1"  ${status==-1?'selected':'' }>请选择</option>
-				      									<option value="0"  ${status==0?'selected':'' }>待审核</option>
+				       									<option value="0"  ${status==0?'selected':'' }>待审核</option>
 				      									<option value="1"  ${status==1?'selected':'' }>审核通过</option>
 				      									<option value="2"  ${status==2?'selected':'' }>审核被拒</option>
 				      							</select>

@@ -26,7 +26,7 @@
         http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 
-
+ 
 	<!-- jdk的序列化方式 -->
 	<bean id="jdkSerializationRedisSerializer"
 		class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"></bean>

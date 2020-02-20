@@ -6,5 +6,5 @@
 	
 	<select id="findUserById" resultType="com.wanyibing.entity.User">
 		SELECT id,username FROM cms_user WHERE id=#{value}
-	</select>
+	</select> 
 </mapper>

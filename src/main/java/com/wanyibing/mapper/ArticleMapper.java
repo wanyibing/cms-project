@@ -17,7 +17,7 @@ import com.wanyibing.entity.Shoucang;
 
 public interface ArticleMapper {
 
-	
+	 
 	List<Article> listByUser(@Param("id")Integer id);
 
 	@Delete("UPDATE cms_article SET deleted=#{status} WHERE id=#{id}")

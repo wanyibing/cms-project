@@ -15,7 +15,7 @@ public class BaseController {
 
 	@Value("${upload.path}")
 	String picRootPath;
-	
+	 
 	@Value("${pic.path}")
 	String picUrl;
 	

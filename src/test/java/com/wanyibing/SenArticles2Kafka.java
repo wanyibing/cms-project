@@ -18,7 +18,7 @@ import com.wanyibing.entity.Article;
  * 读取爬虫取出文章  吧文本的名称作为文章内容,封装道ARticle对象 把对象发送到kafka
  * @author 万一兵
  *
- */
+ */ 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:producer.xml")
 public class SenArticles2Kafka {

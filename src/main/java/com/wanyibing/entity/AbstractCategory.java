@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class AbstractCategory implements Serializable{
 
 	/**
-	 *    
+	 *     
 	 */
 	private static final long serialVersionUID = 3182438792227960429L;
 

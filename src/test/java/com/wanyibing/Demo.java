@@ -20,7 +20,7 @@ import com.wanyibing.service.ArticleService;
 @ContextConfiguration("classpath:spring-beans.xml")
 public class Demo {
 
-	@Autowired
+	@Autowired 
 	ArticleService articleService;
 	
 	

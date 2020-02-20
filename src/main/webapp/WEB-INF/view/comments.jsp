@@ -7,7 +7,7 @@
 	
 		<p style="height: 10px;"><img src="/pic/${comment.url}" style="height: 30px;width: 30px;">&nbsp;${comment.content}</p>
 		<p style="color:gray;  font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${comment.userName} 发表于 <fmt:formatDate value="${comment.created}" pattern="yyyy-MM-dd HH:MM:ss" /><p>
-		</div> 
+		</div>  
 </c:forEach>  
 <style type="text/css">
 		/*  换行？*/

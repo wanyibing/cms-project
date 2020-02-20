@@ -17,7 +17,7 @@ import com.wanyibing.service.ArticleService;
 @ContextConfiguration("classpath:spring-beans.xml")
 public class ImporMysql2Es {
 
-	
+	 
 	@Autowired
 	ArticleMapper articleMapper;
 	

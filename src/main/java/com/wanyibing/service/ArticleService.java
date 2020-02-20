@@ -12,7 +12,7 @@ import com.wanyibing.entity.Comment;
 import com.wanyibing.entity.Complain;
 import com.wanyibing.entity.Shoucang;
 import com.wanyibing.entity.Slide;
-
+ 
 public interface ArticleService {
 	
 	void save(Article article);

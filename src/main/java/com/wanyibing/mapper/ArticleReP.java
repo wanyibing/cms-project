@@ -11,4 +11,4 @@ public interface ArticleReP extends ElasticsearchCrudRepository<Article, Integer
 	List<Article> findByTitle(String key);
 
 
-}
+} 

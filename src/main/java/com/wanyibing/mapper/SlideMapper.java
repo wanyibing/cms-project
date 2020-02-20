@@ -12,5 +12,5 @@ public interface SlideMapper {
 	List<Slide> getSlides();
 
 	
-	
+	 
 }

@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import com.wanyibing.entity.User;
 
 public interface UserMapper {
-
+ 
 	@Select(" SELECT id,username,password FROM cms_user "
 			+ " WHERE username = #{username} limit 1")  
 	User getUserName(String username);

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+ 
 <link href="/resource/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript" src="/resource/js/jqueryvalidate/jquery-3.2.1/jquery.js"></script>
 <script type="text/javascript" src="/resource/bootstrap-4.3.1/js/bootstrap.js"></script>

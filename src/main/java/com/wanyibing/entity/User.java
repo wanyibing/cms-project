@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class User implements Serializable {
  
-	/**
+	/** 
 	 * 
 	 */
 	private static final long serialVersionUID = -9189593261106835826L;
