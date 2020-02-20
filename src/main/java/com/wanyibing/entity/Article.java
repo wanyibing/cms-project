@@ -1,11 +1,27 @@
 package com.wanyibing.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Article {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
+@Document(indexName="cms_articles",type="article")
+public class Article implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3244387253957251736L;
+
+	@Id
 	private Integer id;
+
+	@Field(analyzer="ik_smart",index=true,store=true,searchAnalyzer="ik_smart",type=FieldType.text)
 	private String title;//标题
+	@Field(analyzer="ik_smart",index=true,store=true,searchAnalyzer="ik_smart",type=FieldType.text)
 	private String content ;//文章的内容
 	private String picture;//图片的url
 	private int channelId;//栏目 频道
@@ -20,8 +36,17 @@ public class Article {
 	private int commentCnt; // 评论数量
 	private int articleType; // 文章的类型 文字0     图片  1  
 	private int complainCnt;
+	private int liulan;
 	
 	
+	public int getLiulan() {
+		return liulan;
+	}
+
+	public void setLiulan(int liulan) {
+		this.liulan = liulan;
+	}
+
 	private Channel channel      ;//栏目 频道
 	private Category  category     ; //分类
 	private User user ;

@@ -105,8 +105,11 @@
 	</resultMap>
 	
 	<select id="getComplains" resultMap="ComplainMapper">
-		SELECT * FROM cms_complain where article_id=#{value}
+			SELECT * FROM cms_complain where article_id=#{value}
 	</select>
 	
+	<select id="getcommentCns" resultMap="articleMapper">
 	
+		SELECT * FROM cms_article ORDER BY commentCnt DESC LIMIT 10
+	</select>
 </mapper>

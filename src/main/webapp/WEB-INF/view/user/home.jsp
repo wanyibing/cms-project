@@ -103,6 +103,9 @@
 				    <a class="nav-link" href="#"  onclick="showWork($(this),'postArticle')">发表文章</a>
 				  </li>
 				  <li class="nav-item">
+				    <a class="nav-link active" href="#" onclick="showWork($(this),'shoucang')" >我的收藏</a>
+				  </li>
+				  <li class="nav-item">
 				    <a class="nav-link" href="#" onclick="showWork('/user/comments')" >我的评论</a>
 				  </li>
 				  <li class="nav-item">
@@ -112,7 +115,7 @@
 		</div>
 		
 		<div class="col-md-10" id="workcontent"> 
-			
+			 
 		</div>	
 	</div>
 	

@@ -116,7 +116,7 @@ width: 1200px;
 			</div>
 			
 			<!-- 分页开始 -->
-			<div class="row justify-content-center" style="margin-top:20px">
+			<div class="row justify-content-center" style="margin-top:20px;margin-left:-60px">
 				<nav aria-label="Page navigation example" >
 					  <ul class="pagination ">
 					  

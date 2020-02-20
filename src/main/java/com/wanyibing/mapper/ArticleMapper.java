@@ -13,6 +13,7 @@ import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
 import com.wanyibing.entity.Comment;
 import com.wanyibing.entity.Complain;
+import com.wanyibing.entity.Shoucang;
 
 public interface ArticleMapper {
 
@@ -91,6 +92,23 @@ public interface ArticleMapper {
 
 	
 	List<Complain> complainlist();
+
+	List<Article> getcommentCns();
+
+	@Select("select * from cms_article where status=#{i}")
+	List<Article> findAllArticleWithStatus(int i);
+
+	@Update("UPDATE cms_article SET hits=hits+1 WHERE id=#{id}")
+	void addliulan(int id);
+
+	@Select("SELECT * FROM cms_shoucang WHERE user_id=#{id} ORDER BY created DESC")
+	List<Shoucang> listShoucang(Integer id);
+
+	@Delete("delete FROM cms_shoucang where id=#{id}")
+	int deleteshoucang(int id);
+
+	@Insert("insert into cms_shoucang value(null,#{text},#{url},#{user_id},now())")
+	void addshoucang(Shoucang shoucang);
 
 
 	

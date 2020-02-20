@@ -31,6 +31,7 @@ import com.wanyibing.cms.utils.StringUtils;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
+import com.wanyibing.entity.Shoucang;
 import com.wanyibing.entity.User;
 import com.wanyibing.service.ArticleService;
 import com.wanyibing.service.UserService;
@@ -44,6 +45,8 @@ public class UserController {
 	@Value("${pic.path}")
 	String picUrl;
 	
+	 
+	
 	@Autowired 
 	private UserService service; 
 	
@@ -53,6 +56,13 @@ public class UserController {
 	@RequestMapping("logout")
 	public String home(HttpServletRequest request) {
 		request.getSession().removeAttribute(CmsContant.USER_KEY);
+	/*	Cookie[] cookies = request.getCookies();
+		try {
+			cookies.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		return "redirect:/";
 	}
 	
@@ -125,20 +135,18 @@ public class UserController {
 			request.setAttribute("error", "用户名密码错误");
 			return "user/login";
 		}
-		
-		//登录成功  用户信息存放到session当中
+
 		request.getSession().setAttribute(CmsContant.USER_KEY, loginUser);
 		
+		//保存用户的用户名和密码
 		Cookie cookieUserName = new Cookie("username", user.getUsername());
 		cookieUserName.setPath("/");
-		cookieUserName.setMaxAge(10*24*3600);
+		cookieUserName.setMaxAge(10*24*3600);// 10天
 		response.addCookie(cookieUserName);
-		Cookie cookieUserPwd = new Cookie("userpwd",pwd);
+		Cookie cookieUserPwd = new Cookie("userpwd", pwd);
 		cookieUserPwd.setPath("/");
-		cookieUserPwd.setMaxAge(10*24*3600);
+		cookieUserPwd.setMaxAge(10*24*3600);// 10天
 		response.addCookie(cookieUserPwd);
-		
-		
 	/*	Cookie cookie = new Cookie("password", user.getPassword());
 		response.addCookie(cookie);
 		*/
@@ -176,6 +184,9 @@ public class UserController {
 	@ResponseBody
 	public boolean deletearticle(int id) {
 		int result  = articleService.delete(id);
+		
+		articleService.del(id);
+		
 		return result > 0;
 	}
 	@RequestMapping("postArticle")
@@ -215,8 +226,9 @@ public class UserController {
 		User loginUser = (User) request.getSession().getAttribute(CmsContant.USER_KEY);
 		article.setUserId(loginUser.getId());
 		
-		
-		return articleService.add(article)>0;
+		 articleService.save(article);
+		 return true;
+		//return articleService.add(article)>0;
 		
 	}
 
@@ -301,5 +313,28 @@ public class UserController {
 			int updateREsult  = articleService.update(article,loginUser.getId());
 		
 		return updateREsult>0;
+	}
+	
+	/**
+	 * 显示收藏文章
+	 */
+	@RequestMapping("shoucang")
+	public String shoucang(HttpServletRequest request,@RequestParam(defaultValue="1")int page) {
+		
+		User loginUser = (User) request.getSession().getAttribute(CmsContant.USER_KEY);
+		
+		PageInfo<Shoucang> articlePage = articleService.listShoucang(loginUser.getId(),page);
+		request.setAttribute("articlePage", articlePage);
+		
+		return "user/article/shoucang";
+	}
+	/**
+	 * 删除收藏文章
+	 */
+	@RequestMapping("deleteshoucang")
+	@ResponseBody
+	public boolean deleshoucang(int id) {
+		int result  = articleService.deleteshoucang(id);
+		return result > 0;
 	}
 }

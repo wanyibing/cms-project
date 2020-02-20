@@ -10,9 +10,12 @@ import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
 import com.wanyibing.entity.Comment;
 import com.wanyibing.entity.Complain;
+import com.wanyibing.entity.Shoucang;
 import com.wanyibing.entity.Slide;
 
 public interface ArticleService {
+	
+	void save(Article article);
 
 	PageInfo<Article> listByUser(Integer id, int page);
 
@@ -61,4 +64,17 @@ public interface ArticleService {
 
 	PageInfo<Complain> complainlist(int page);
 
+	List<Article> getcommentCns();
+
+	void del(int id);
+
+	void addliulan(int id);
+
+	PageInfo<Shoucang> listShoucang(Integer id, int page);
+
+	int deleteshoucang(int id);
+
+	void addshoucang(Shoucang shoucang);
+
+	 
 }

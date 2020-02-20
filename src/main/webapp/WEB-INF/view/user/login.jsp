@@ -52,6 +52,7 @@
 					</div>
 					
 					<div class="form-group">  
+						<input type="checkbox" value="1" name="check" >记住密码
 						<input type="submit" class="btn btn-success pull-right" value="Login "/>   
 					</div>
 				</div>

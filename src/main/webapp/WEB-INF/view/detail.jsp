@@ -22,9 +22,12 @@
 		</div>
 		<div class="row justify-content-center">
 			<h5  style="color:gray;font-size: 15px;">
-			作者：${article.user.username} &nbsp;&nbsp;&nbsp;
+			作者：${article.user.username} ${article.id} &nbsp;&nbsp;&nbsp;
 			栏目：${article.channel.name}  &nbsp;&nbsp;&nbsp;
 			分类：${article.category.name}&nbsp;&nbsp;&nbsp;
+			浏览量:${article.hits} &nbsp;&nbsp;&nbsp;
+			<!-- <input type="button" value="收藏"  class="btn btn-danger" onclick="del()"> &nbsp;&nbsp;&nbsp; -->
+			<a href="/article/shoucangurl?title=${article.title}&id=${article.id}">收藏</a> <span style="color: red;">${err}</span>
 			发表时间：<fmt:formatDate value="${article.created}" pattern="yyyy-MM-dd"/> 
 			</h5>
 			<%--  <a href="/article/complain?articleId=${article.id}">举报</a>   --%>
@@ -68,7 +71,8 @@
 			// 显示第一页的评论
 			showComment(1)
 		})
-		
+		 
+	 
 		function addComment(){
 			alert($("#commentText").val());
 			

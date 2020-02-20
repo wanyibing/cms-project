@@ -148,10 +148,10 @@ width: 1200px;
 					    <span class="sr-only">Next</span>
 					  </a>
 					</div>
-			</div>
+			</div> 
 			<!-- 文章的列表 -->
-			<div style="margin-top:20px;margin-left: -80px;">
-				<c:forEach items="${artclePage.list}" var="article">
+			 <div style="margin-top:20px;margin-left: -80px;">
+				<c:forEach items="${artclePage.list}" var="article"> 
 					<div class="row" style="margin-top:10px">
 						<div class="col-md-3">
 							<img src="/pic/${article.picture}"  width="130" height="100" 
@@ -165,24 +165,34 @@ width: 1200px;
 							作者：${article.user.username}
 							<br>
 							栏目：<a> ${article.channel.name} </a>&nbsp;&nbsp;&nbsp;&nbsp; 分类：<a>${article.category.name}</a>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
+						 </div>
+					</div> 
+				</c:forEach> 
+			</div> 
 			
 		<!-- 分页开始 -->
-			<div class="row justify-content-center" style="margin-top:20px;margin-left: -200px">
-				<nav aria-label="Page navigation example" >
+			  <div class="row justify-content-center" style="margin-top:20px;margin-left: -200px">
+			  <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/index?page=${artclePage.pages}">首页</a></li>
+    <li class="page-item"><a class="page-link" href="/index?page=${artclePage.pageNum+1}">${artclePage.pageNum+1}</a></li>
+    <li class="page-item"><a class="page-link" href="/index?page=${artclePage.pageNum+2}">${artclePage.pageNum+2}</a></li>
+    <li class="page-item"><a class="page-link" href="/index?page=${artclePage.pages}">Next</a></li>
+    <!-- es高亮查询分页 -->
+    <li class="page-item"><a class="page-link" href="/article/search?page=${artclePage.nextPage}&key=${key}">下一页</a></li>
+  </ul>
+</nav>
+				<%-- <nav aria-label="Page navigation example" >
 					  <ul class="pagination ">
 					  
 					    <li class="page-item">
-					      <a class="page-link" href="/index?page=1" aria-label="Previous">
+					      <a class="page-link" href="/index?page=${artclePage.pages}" aria-label="Previous">
 					        <span aria-hidden="true">首页</span>
 					      </a>
 					    </li>
 					    
 					    <c:forEach begin="1" end="${artclePage.pages}" varStatus="index">
-						 <%--    <c:if test="${artclePage.pageNum==index.index-2}">
+						    <c:if test="${artclePage.pageNum==index.index-2}">
 					    	
 					    			<li class="page-item"><a class="page-link" href="javascript:void()"><font color="red"> ${index.index-2} </font></a></li>
 					    		
@@ -192,7 +202,7 @@ width: 1200px;
 					    			<li class="page-item"><a class="page-link" href="javascript:void()"><font color="red"> ${index.index-1} </font></a></li>
 					    		
 					  		</c:if>
-					    	 --%>
+					    	
 					    	<!-- 当前页码的处理 -->
 					    	<c:if test="${artclePage.pageNum==index.index}">
 					    	
@@ -216,22 +226,22 @@ width: 1200px;
 					  		
 					    	
 					  		
-					  	<%-- 	<!-- 非当前页码的处理 -->
-							<c:if test="${artclePage.pageNum!=index.index}">
+					  		<!-- 非当前页码的处理 -->
+							<c:if test="${a.pageNum!=index.index}">
 					    		<li class="page-item"><a class="page-link" href="/index?page=${index.index}"> ${index.index}</a></li>
-					  		</c:if> --%>
+					  		</c:if>
 					  
 					    </c:forEach>
 					    
 					    <li class="page-item">
-					      <a class="page-link" href="/index?page=${artclePage.pages}" aria-label="尾页">
+					      <a class="page-link" href="/index?page=${a.pages}" aria-label="尾页">
 					        <span aria-hidden="true">尾页</span>
 					      </a>
 					    </li>
 					    
 					  </ul>
-					</nav>
-			</div>
+					</nav> --%>
+			</div>  
 			<!-- 分页结束 -->
 		</div><!-- 右侧 -->
 		<div class="col-md-4">
@@ -267,6 +277,18 @@ width: 1200px;
 	</div>
 </div>
 <jsp:include page="common/footer.jsp"></jsp:include>
+<script type="text/javascript">
+
+function goPage(page){
+	var channelId='${article.channelId}';
+	var categoryId='${article.categoryId}';
+	VAR key='${key}';
+	 
+	location.href="?channelId="+channelId+"&categoryId="+categoryId+"&page="+page+"&key="+key;
+	
+}
+
+</script>
 
 </body>
 </html>

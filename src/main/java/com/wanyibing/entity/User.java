@@ -2,9 +2,10 @@ package com.wanyibing.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.validation.constraints.NotBlank;
+ 
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 public class User implements Serializable {
  
@@ -145,7 +146,16 @@ public class User implements Serializable {
 				+ ", birthday=" + birthday + ", gender=" + gender + ", locked=" + locked + ", createTime=" + createTime
 				+ ", updateTime=" + updateTime + ", url=" + url + ", score=" + score + ", role=" + role + "]";
 	}
-	
+	private Integer check;
+
+	public Integer getCheck() {
+		return check;
+	}
+	public void setCheck(Integer check) {
+		this.check = check;
+	}
+
+	 
 	
 	
 }

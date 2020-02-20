@@ -18,6 +18,8 @@ import com.wanyibing.Utils.CmsMessage;
 import com.wanyibing.entity.Article;
 import com.wanyibing.entity.Complain;
 import com.wanyibing.entity.User;
+import com.wanyibing.mapper.ArticleMapper;
+import com.wanyibing.mapper.ArticleReP;
 import com.wanyibing.service.ArticleService;
 
 @RequestMapping("admin")
@@ -26,6 +28,12 @@ public class AdminController {
 
 	@Autowired
 	ArticleService articleService;
+	
+	@Autowired
+	ArticleMapper articleMapper;
+	
+	@Autowired
+	ArticleReP articleReP;
 	
 	@RequestMapping("index")
 	public String index() {
@@ -63,7 +71,10 @@ public class AdminController {
 		int result = articleService.setCheckStatus(id,status);
 		if(result<1)
 			return new CmsMessage(CmsError.FAILED_UPDATE_DB,"设置失败，请稍后再试",null);
-		
+		//1.从mysql种已经审核通过所有的文章
+		List<Article> articles = articleMapper.findAllArticleWithStatus(1);
+		//2.查询出来的文章保存再es的索引库
+		articleReP.saveAll(articles);
 		
 		return new CmsMessage(CmsError.SUCCESS,"成功",null);
 	}

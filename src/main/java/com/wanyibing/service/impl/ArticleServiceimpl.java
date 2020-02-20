@@ -14,8 +14,10 @@ import com.wanyibing.entity.Category;
 import com.wanyibing.entity.Channel;
 import com.wanyibing.entity.Comment;
 import com.wanyibing.entity.Complain;
+import com.wanyibing.entity.Shoucang;
 import com.wanyibing.entity.Slide;
 import com.wanyibing.mapper.ArticleMapper;
+import com.wanyibing.mapper.ArticleReP;
 import com.wanyibing.mapper.SlideMapper;
 import com.wanyibing.service.ArticleService;
 
@@ -27,6 +29,14 @@ public class ArticleServiceimpl implements ArticleService {
 	
 	@Autowired
 	SlideMapper slideMapper;
+	
+	@Autowired
+	ArticleReP articleRep;
+	
+	//add
+	public void save(Article article) {
+		articleRep.save(article);
+	}
 	@Override
 	public PageInfo<Article> listByUser(Integer id, int page) {
 		 
@@ -213,4 +223,43 @@ public class ArticleServiceimpl implements ArticleService {
 		 PageHelper.startPage(page, CmsContant.PAGE_SIZE);
 			return new PageInfo<Complain>(articleMapper.complainlist());
 	}
+	@Override
+	public List<Article> getcommentCns() {
+		// TODO Auto-generated method stub
+		return articleMapper.getcommentCns();
+	}
+	/**
+	 * 删除es数据
+	 */
+	@Override
+	public void del(int id) {
+		// TODO Auto-generated method stub
+		articleRep.deleteById(id);
+	}
+	@Override
+	public void addliulan(int id) {
+		// TODO Auto-generated method stub
+		articleMapper.addliulan(id);
+	}
+	/**
+	 * 收藏
+	 */
+	@Override
+	public PageInfo<Shoucang> listShoucang(Integer id, int page) {
+		PageHelper.startPage(page,CmsContant.PAGE_SIZE);
+		  PageInfo<Shoucang> articlePage = new PageInfo<Shoucang>(articleMapper.listShoucang(id));
+		
+		return articlePage;
+	}
+	@Override
+	public int deleteshoucang(int id) {
+		// TODO Auto-generated method stub
+		return articleMapper.deleteshoucang(id);
+	}
+	@Override
+	public void addshoucang(Shoucang shoucang) {
+		 
+		articleMapper.addshoucang(shoucang);
+	}
+ 
 }

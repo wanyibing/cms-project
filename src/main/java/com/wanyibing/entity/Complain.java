@@ -1,11 +1,10 @@
 package com.wanyibing.entity;
 
-import java.util.Date;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import java.util.Date; 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.lang.NonNull;
 
 public class Complain {
