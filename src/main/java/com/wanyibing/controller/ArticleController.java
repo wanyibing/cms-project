@@ -41,7 +41,7 @@ import com.wanyibing.entity.User;
 import com.wanyibing.mapper.ArticleReP;
 import com.wanyibing.service.ArticleService;
 
-@Controller
+@Controller 
 @RequestMapping("article")
 public class ArticleController extends BaseController{
 
