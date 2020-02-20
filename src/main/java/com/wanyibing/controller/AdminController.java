@@ -26,7 +26,7 @@ import com.wanyibing.service.ArticleService;
 @Controller
 public class AdminController { 
 
-	@Autowired
+	@Autowired 
 	ArticleService articleService;
 	
 	@Autowired
